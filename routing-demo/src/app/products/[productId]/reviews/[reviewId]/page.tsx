@@ -1,14 +1,23 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
+
+// function getRandomNumber(count: number) {
+//   return Math.floor(Math.random() * count);
+// }
 
 export default async function Review({
   params,
 }: {
   params: Promise<{ productId: string; reviewId: string }>;
 }) {
+  // const random = getRandomNumber(2);
+  // if (random === 1) {
+  //   throw new Error("Error loading review");
+  // }
+
   const reviewId = (await params).reviewId;
   const productId = (await params).productId;
   if (parseInt(reviewId) > 1000) {
-    notFound();
+    redirect("/products");
   }
   return (
     <>

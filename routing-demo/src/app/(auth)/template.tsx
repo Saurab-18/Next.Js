@@ -1,5 +1,8 @@
+"use client";
 import { ReactNode } from "react";
+import { useState } from "react";
 import Link from "next/link";
+
 export default function AuthLayout({ children }: { children: ReactNode }) {
   const navLinks = [
     { name: "Register", href: "/register" },
@@ -13,8 +16,11 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
     },
   ];
 
+  const [input, setInput] = useState("");
+
   return (
     <>
+      <input onChange={(e) => setInput(e.target.value)} />
       <div>
         {navLinks.map((navLink) => {
           return (
